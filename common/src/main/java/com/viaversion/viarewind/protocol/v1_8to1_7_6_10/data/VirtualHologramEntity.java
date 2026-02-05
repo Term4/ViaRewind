@@ -1,6 +1,6 @@
 /*
  * This file is part of ViaRewind - https://github.com/ViaVersion/ViaRewind
- * Copyright (C) 2018-2025 ViaVersion and contributors
+ * Copyright (C) 2018-2026 ViaVersion and contributors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -120,7 +120,7 @@ public class VirtualHologramEntity {
         gravity = (armorStandFlags & 0x02) == 0;
 
         State prevState = currentState;
-        if (invisible && name != null) {
+        if (invisible && name != null && alwaysShowNametag == 1) {
             currentState = State.HOLOGRAM;
         } else if (gravity) {
             currentState = State.ZOMBIE;

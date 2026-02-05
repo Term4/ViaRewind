@@ -1,6 +1,6 @@
 /*
  * This file is part of ViaRewind - https://github.com/ViaVersion/ViaRewind
- * Copyright (C) 2018-2025 ViaVersion and contributors
+ * Copyright (C) 2018-2026 ViaVersion and contributors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -447,7 +447,7 @@ public class PlayerPacketRewriter1_9 extends RewriterBase<Protocol1_9To1_8> {
                 map(Types.BLOCK_POSITION1_8); // Position
                 handler(wrapper -> {
                     for (int i = 0; i < 4; i++) {
-                        final JsonElement json = wrapper.read(RewindTypes.SIGN_COMPONENT);
+                        final JsonElement json = wrapper.read(Types.COMPONENT);
                         if (!json.isJsonPrimitive()) {
                             throw new IllegalStateException("Invalid sign text: " + StringUtil.forLogging(json));
                         }

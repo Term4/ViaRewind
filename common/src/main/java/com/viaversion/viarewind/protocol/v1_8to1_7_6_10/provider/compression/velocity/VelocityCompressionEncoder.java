@@ -15,15 +15,25 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.viaversion.viarewind.protocol.v1_9to1_8.provider;
+package com.viaversion.viarewind.protocol.v1_8to1_7_6_10.provider.compression.velocity;
 
-import com.viaversion.viaversion.api.connection.UserConnection;
-import com.viaversion.viaversion.api.platform.providers.Provider;
+import com.velocitypowered.natives.compression.VelocityCompressor;
+import com.viaversion.viarewind.protocol.v1_8to1_7_6_10.provider.compression.CompressionEncoder;
+import io.netty.buffer.ByteBuf;
+import java.util.zip.DataFormatException;
 
-public class InventoryProvider implements Provider {
+public final class VelocityCompressionEncoder extends CompressionEncoder {
 
-    public boolean hasElytra(final UserConnection connection) {
-        return false;
+    private final VelocityCompressor compressor;
+
+    public VelocityCompressionEncoder(final int threshold, final VelocityCompressor compressor) {
+        super(threshold);
+        this.compressor = compressor;
+    }
+
+    @Override
+    protected void deflate(final ByteBuf source, final ByteBuf destination) throws DataFormatException {
+        this.compressor.deflate(source, destination);
     }
 
 }

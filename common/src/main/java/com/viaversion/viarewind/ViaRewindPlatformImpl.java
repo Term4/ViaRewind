@@ -15,15 +15,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.viaversion.viarewind.protocol.v1_9to1_8.provider;
+package com.viaversion.viarewind;
 
-import com.viaversion.viaversion.api.connection.UserConnection;
-import com.viaversion.viaversion.api.platform.providers.Provider;
+import com.viaversion.viarewind.api.ViaRewindPlatform;
+import com.viaversion.viaversion.api.Via;
+import java.io.File;
+import java.util.logging.Logger;
 
-public class InventoryProvider implements Provider {
+public class ViaRewindPlatformImpl implements ViaRewindPlatform {
 
-    public boolean hasElytra(final UserConnection connection) {
-        return false;
+    private final Logger logger;
+
+    public ViaRewindPlatformImpl() {
+        logger = Via.getPlatform().createLogger("ViaRewind");
+        init(new File(getDataFolder(), "viarewind.yml"));
     }
 
+    @Override
+    public Logger getLogger() {
+        return logger;
+    }
+
+    @Override
+    public File getDataFolder() {
+        return Via.getPlatform().getDataFolder();
+    }
 }

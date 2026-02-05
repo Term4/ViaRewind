@@ -1,6 +1,6 @@
 /*
  * This file is part of ViaRewind - https://github.com/ViaVersion/ViaRewind
- * Copyright (C) 2018-2025 ViaVersion and contributors
+ * Copyright (C) 2018-2026 ViaVersion and contributors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,11 +36,14 @@ public interface ViaRewindPlatform {
     String VERSION = "${version}";
     String IMPL_VERSION = "${impl_version}";
 
+    default void init(final File configFile) {
+        init(new ViaRewindConfig(configFile, getLogger()));
+    }
+
     /**
      * Initialize ViaRewind
      */
-    default void init(final File configFile) {
-        ViaRewindConfig config = new ViaRewindConfig(configFile, getLogger());
+    default void init(final com.viaversion.viarewind.api.ViaRewindConfig config) {
         config.reload();
         Via.getManager().getConfigurationProvider().register(config);
 

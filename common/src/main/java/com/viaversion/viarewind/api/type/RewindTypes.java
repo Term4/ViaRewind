@@ -1,6 +1,6 @@
 /*
  * This file is part of ViaRewind - https://github.com/ViaVersion/ViaRewind
- * Copyright (C) 2018-2025 ViaVersion and contributors
+ * Copyright (C) 2018-2026 ViaVersion and contributors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,6 @@ import com.viaversion.viaversion.api.minecraft.entitydata.EntityData;
 import com.viaversion.viaversion.api.minecraft.item.Item;
 import com.viaversion.viaversion.api.type.Type;
 import com.viaversion.viaversion.api.type.Types;
-import com.viaversion.viaversion.libs.gson.JsonElement;
 import java.util.List;
 
 /**
@@ -36,7 +35,6 @@ import java.util.List;
  */
 public class RewindTypes {
 
-    public static final Type<JsonElement> SIGN_COMPONENT = new SignComponentType();
     public static final Type<int[]> INT_ARRAY = new IntArrayType(); // Integer array with byte as length indicator
 
     public static final Type<BlockPosition> SHORT_POSITION = new PositionVarYType<>(Types.SHORT, value -> (short) value);
